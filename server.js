@@ -19,9 +19,4 @@ app.get('/pet', function(req, res){
 app.get('/', function(req, res){         //     /는 홈페이지.    
     res.sendFile(__dirname + '/mainpage.html');      //html을 전송
 });
-<<<<<<< HEAD
 
-
-=======
-//
->>>>>>> signup
