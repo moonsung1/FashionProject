@@ -8,7 +8,7 @@ app.listen(1004, function(){
 });                 // 여기까지 express 기본문법    1004 port 서버 띄워주세요
 
 
-//누군가가 /pet 으로 방문을 하면
+//누군가가 /pet 으로 방문을 하면`
 // pet 관련된 안내문을 띄워주자
 
 app.get('/pet', function(req, res){
@@ -19,4 +19,5 @@ app.get('/pet', function(req, res){
 app.get('/', function(req, res){         //     /는 홈페이지.    
     res.sendFile(__dirname + '/mainpage.html');      //html을 전송
 });
+
 
