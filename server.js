@@ -30,6 +30,18 @@ app.get('/images', function(req,res){
 
 });
 
+app.get('/closet', function(req, res){         
+    res.sendFile(__dirname + '/closet.html'); 
+});
+
+app.get('/weather', function(req, res){         
+    res.sendFile(__dirname + '/weather.html'); 
+});
+
+app.get('/home', function(req, res){         
+    res.sendFile(__dirname + '/mainpage.html'); 
+});
+
 app.get('/image', function(req,res){
 
     fs.readFile('./images/북한돼지.jpg', function(err,data){
