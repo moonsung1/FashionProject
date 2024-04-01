@@ -44,9 +44,9 @@ app.get('/home', function(req, res){
 
 app.get('/image', function(req,res){
 
-    fs.readFile('./images/북한돼지.jpg', function(err,data){
-     res.writeHead(200, {'Content-Type': 'images/jpg'});
-     res.end(data);
+fs.readFile('./images/북한돼지.jpg', function(err,data){
+    res.writeHead(200, {'Content-Type': 'images/jpg'});
+    res.end(data);
 });
 
 });

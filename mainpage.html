@@ -2,11 +2,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>소공응프로젝트</title>
+    <title>메인페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
-  
-  
+
     <body>
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -17,19 +16,22 @@
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src="./images" 
-          alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-          FashionProject
+          <img src="./images" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          <!-- 체크 ./images -->
+          FashionProject           
         </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
          data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#" id="homeBtn">Home</a>
+              <!-- id=homeBtn을 넣은거임 -->
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" id="closetBtn">closet</a>
@@ -39,29 +41,24 @@
             </li>
           </ul>
 
-           <!-- <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">closet</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">weather</a>
-            </li>
-            
-          </ul> -->
-
         </div>
       </div>
     </nav>
 
-    <img src="./image" >
+    <img src="./image" >         
+
 
     <script>
       document.getElementById('closetBtn').addEventListener('click', function() {
         window.location.href = '/closet';
       });
+
+//       closetBtn라는 ID를 가진 요소에 클릭 이벤트를 추가 , 버튼이 클릭되었을 때 실행되는 동작
+
+//  document.getElementById('closetBtn')는 HTML 문서 내에서 id="closetBtn"인 요소를 찾아서 가져오는 역할
+
+// .addEventListener('click', function() { ... }) 부분은 해당 요소에 클릭 이벤트를 추가하는 역할
+// 클릭 이벤트가 발생했을 때  /closet로 이동하도록 지정되어 있으므로, 클릭했을 때 /closet 경로로 이동
       
       document.getElementById('weatherBtn').addEventListener('click', function() {
         window.location.href = '/weather';
