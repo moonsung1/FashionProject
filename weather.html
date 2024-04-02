@@ -58,59 +58,22 @@
       </script>
 
 
-<h3>오늘의 날씨</h3>
+<h3>현재 날씨</h3>
 <hr>
-<body>
-    <button class="button" type="button">현재 날씨는?</button>
-    <dl>
-      <dt>기온</dt>
-      <dd class="temperature"></dd>
-      <dt>위치</dt>
-      <dd class="place"></dd>
-      <dt>설명</dt>
-      <dd class="description"></dd>
-    </dl>
-    <script src="weather.js"></script>
-  </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<input id="city" type="text" value ="">
+<button onclick="getWeather()">날씨 불러오기</button>
+<br>
+<p id="temperature"></p>     
+<!-- ajax fetch -->
+<script>
+function getWeather(){
+    let city = document.getElementById("city").value;
+    fetch('https://goweather.herokuapp.com/weather/'+ city)
+  .then((response) => response.json())
+  .then((data) => {
+    document.getElementById("temperature").innerHTML = data['temperature']
+  });
+}
+</script>
 </body>
 </html>

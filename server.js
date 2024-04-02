@@ -40,14 +40,3 @@ app.get('/image', function(req,res){
     res.end(data);
 });
 });
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
