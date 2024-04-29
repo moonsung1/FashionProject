@@ -19,16 +19,9 @@ app.get('/closet', function(req, res){
       
 
 
-// app.get('/images', function(req,res){
-//     fs.readFile('./images/denim.jpg', function(err,data){
-//      res.writeHead(200, {'Content-Type': 'images/jpg'});
-//      res.end(data);
-// });
-// });
-
-// app.get('/image', function(req,res){
-//     fs.readFile('./images/북한돼지.jpg', function(err,data){
-//     res.writeHead(200, {'Content-Type': 'images/jpg'});
-//     res.end(data);
-// });
-// });
+app.get('/images', function(req,res){
+    fs.readFile('./images/denim.jpg', function(err,data){
+     res.writeHead(200, {'Content-Type': 'images/jpg'});
+     res.end(data);
+});
+});
