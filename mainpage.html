@@ -1,73 +1,260 @@
-<!doctype html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
     <title>메인페이지</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    </head>
+    <style>
+        #menubar{
+            background: #f1f1f1;
+        }
+        #menubar ul{
+            margin: 0;
+            padding: 0;
+            width: 567px;
+        }
+        #menubar ul li{
+            display: inline-block;
+            padding: 0px 15px; 
+        }
+        #menubar ul li a{
+           color: black;
+           text-decoration: none;
+        }
+        #menubar ul li a:hover{
+           color: violet;      
+        }
+        html,body{
+    height: 100%; margin: 0; padding: 0;
+}
+body{
+    font-family: Arial, sans-serif;
+}
+header{
+    width: 100%;
+    height: 20%;
+    background: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+}
 
-    <body>
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    
-    
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="./images" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-          <!-- 체크 ./images -->
-          FashionProject           
-        </a>
+nav{
+    width: 100%;
+    height: 20%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    margin:10px;
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+}
+footer{
+    width: 100;
+    height: 10%;
+    background: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+}
+h1{
+    font-family:'Pacifico' , cursive;
+    font-size: 48px;
+    color: #ff6b6b;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+#signin{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ccc;
+    width: 240px;
+    height:50px;
+    padding: 10px;
 
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    align-self: flex-end;
 
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" id="homeBtn">Home</a>
-              <!-- id=homeBtn을 넣은거임 -->
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="closetBtn">closet</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="weatherBtn">weather</a>
-            </li>
-          </ul>
+}
 
+
+#signin > button{
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+aside{
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ccc;
+    margin-right : 20px;
+    padding: 20px;
+
+
+    flex :1;
+}
+
+section{
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ccc;
+    padding: 20px;
+
+
+    flex:3;
+}
+    </style>
+</head>
+<body>
+    <header> 
+        <h1>Pickolor</h1>
+    </header>
+
+    <nav>
+        <div id="signin">
+            <input type="text" placeholder="아이디"><button type="button">로그인</button>
+            <input type="password" placeholder="비밀번호"></td>
         </div>
-      </div>
+        <nav id ="menubar">
+            <ul>
+                <li><a href="#" id="homeBtn">Home</a></li>
+                <li><a href="#" id="closetBtn">Closet</a></li>
+                <li><a href="#" id="homeBtn">Pickolor</a></li>
+                <li><a href="#" id="homeBtn">SignUp</a></li>
+            </ul>
+        </nav>
+       
     </nav>
 
-    <img src="./image" >         
+
+
+    <main>
+        <aside>
+
+            <h3>현재 날씨</h3>
+
+            <label for="city">도시를 입력하세요:</label>
+            <input id="city" type="text" value ="">
+            <button onclick="getWeather()">날씨 불러오기</button>
+            <!-- <button onclick="getWeatherAndAsk()">날씨를 불러와 gpt에 질문</button> -->
+        <br>
+            <p id="temperature"></p>
+            <!-- <div id="chat-container"></div>      -->
+            <!-- ajax fetch -->
+        <script>
+            function getWeather(){
+            let city = document.getElementById("city").value;
+            fetch('https://goweather.herokuapp.com/weather/'+ city)
+            .then((response) => response.json())
+            .then((data) => {
+            document.getElementById("temperature").innerHTML = data['temperature']
+            });
+        }
+        </script>
+
+        </aside>
+        
+        <section>
+            <h2>Pickolor</h2>
+        
+            "패션을 더 쉽고 더 즐겁게: 스타일링을 위한 지능형 가이드"
+            
+            환영합니다!
+            
+            당신의 일상을 더욱 즐겁고 스타일리시하게 만들어줄 새로운 패션 파트너를 소개합니다. 우리는 당신의 스타일과 선호도를 고려하여 맞춤형 패션 조언을 제공하는 특별한 웹 플랫폼입니다.
+            
+            패션은 더 이상 번거로운 작업이 아닙니다. 날씨, 색상, 그리고 당신의 옷장 속 아이템을 고려하여 최적의 의상 조합을 제안합니다. 이제 귀찮은 옷 고르기에서 벗어나, 당신만의 개성을 뽐내는 스타일을 자유롭게 표현해보세요.
+            
+            또한, 패션에 대한 지식이 없더라도 걱정하지 마세요. 쉽고 간편한 사용법으로 모두가 패션에 대한 전문가가 될 수 있도록 돕습니다. 여러분의 일상을 더 즐겁고 스타일리시하게 만들어줄 'Pickolor'와 함께하세요. 지금 시작해보세요!
+        </section>
+    </main> 
+
+    <footer>
+        <p><strong>&copy 2024  Pickolor 메인 페이지. All rights reserved.</strong></p>
+    </footer>
+
 
 
     <script>
-      document.getElementById('closetBtn').addEventListener('click', function() {
-        window.location.href = '/closet';
+        document.getElementById('closetBtn').addEventListener('click', function() {
+          window.location.href = '/closet';
+        });
+  
+  //       closetBtn라는 ID를 가진 요소에 클릭 이벤트를 추가 , 버튼이 클릭되었을 때 실행되는 동작
+  
+  //  document.getElementById('closetBtn')는 HTML 문서 내에서 id="closetBtn"인 요소를 찾아서 가져오는 역할
+  
+  // .addEventListener('click', function() { ... }) 부분은 해당 요소에 클릭 이벤트를 추가하는 역할
+  // 클릭 이벤트가 발생했을 때  /closet로 이동하도록 지정되어 있으므로, 클릭했을 때 /closet 경로로 이동
+        
+        document.getElementById('homeBtn').addEventListener('click', function() {
+          window.location.href = '/';
+        });
+
+
+
+    </script>
+
+<!-- <script>
+  function getWeatherAndAsk(){
+      let city = document.getElementById("city").value;
+      fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city)
+      .then((response) => response.json())
+      .then((data) => {
+          let temperature = data.main.temp;
+
+          document.getElementById("temperature").innerHTML = data['temperature']
+
+          // Ask question based on weather
+          askGPT(temperature);
+      });
+  }
+
+  async function askGPT(temperature){
+      let question;
+     
+     if (temperature >= 25) {
+        question = "25도 이상으로 꽤 더운 날씨인데, 상의 하의 무슨 옷을 입으면 좋을까?";
+    } else if (temperature >= 20 && temperature < 25) {
+        question = "20도에서 25도 사이로 따뜻한 날씨인데, 상의 하의 무슨 옷을 입으면 좋을까?";
+    } else if (temperature >= 15 && temperature < 20) {
+        question = "15도에서 20도 사이로 적당한 날씨인데, 상의 하의 무슨 옷을 입으면 좋을까?";
+    } else if (temperature >= 10 && temperature < 15) {
+         question = "10도에서 15도 사이로 쌀쌀한 날씨인데, 상의 하의 무슨 옷을 입으면 좋을까?";
+    } else {
+        question = "10도 미만으로 추운 날씨인데, 상의 하의 무슨 옷을 입으면 좋을까?";
+    }
+
+      // Make a request to GPT API
+      const response = await fetch('https://api.openai.com/v1/engines/davinci/completions', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer' 
+          },
+          body: JSON.stringify({
+              prompt: question,
+              max_tokens: 50
+          })
       });
 
-//       closetBtn라는 ID를 가진 요소에 클릭 이벤트를 추가 , 버튼이 클릭되었을 때 실행되는 동작
+      const responseData = await response.json();
 
-//  document.getElementById('closetBtn')는 HTML 문서 내에서 id="closetBtn"인 요소를 찾아서 가져오는 역할
+      // Display response
+      let chatContainer = document.getElementById("chat-container");
+      let responseElement = document.createElement("p");
+      responseElement.innerHTML = "GPT: " + responseData.choices[0].text.trim();
+      chatContainer.appendChild(responseElement);
+  }
+</script> -->
 
-// .addEventListener('click', function() { ... }) 부분은 해당 요소에 클릭 이벤트를 추가하는 역할
-// 클릭 이벤트가 발생했을 때  /closet로 이동하도록 지정되어 있으므로, 클릭했을 때 /closet 경로로 이동
-      
-      document.getElementById('weatherBtn').addEventListener('click', function() {
-        window.location.href = '/weather';
-      });
 
-      document.getElementById('homeBtn').addEventListener('click', function() {
-        window.location.href = '/home';
-      });
-      </script>
 
+
+
+  
 </body>
 </html>
