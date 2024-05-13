@@ -17,6 +17,12 @@ app.get('/closet', function(req, res){
     res.sendFile(__dirname + '/closet.html'); 
 });
       
+app.get('/mainPageImages', function(req,res){
+    fs.readFile('./images/MainpageImage.png', function(err,data){
+     res.writeHead(200, {'Content-Type': 'images/jpg'});
+     res.end(data);
+});
+});
 
 
 app.get('/images', function(req,res){
