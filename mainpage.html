@@ -2,107 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>메인페이지</title>
-    <style>
-        #menubar{
-            background: #f1f1f1;
-        }
-        #menubar ul{
-            margin: 0;
-            padding: 0;
-            width: 567px;
-        }
-        #menubar ul li{
-            display: inline-block;
-            padding: 0px 15px; 
-        }
-        #menubar ul li a{
-           color: black;
-           text-decoration: none;
-        }
-        #menubar ul li a:hover{
-           color: violet;      
-        }
-        html,body{
-    height: 100%; margin: 0; padding: 0;
-}
-body{
-    font-family: Arial, sans-serif;
-}
-header{
-    width: 100%;
-    height: 20%;
-    background: #f1f1f1;
-    text-align: center;
-    padding: 10px;
-}
-
-nav{
-    width: 100%;
-    height: 20%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-main{
-    width: 100%;
-    height: 50%;
-    display: flex;
-    margin:10px;
-
-}
-footer{
-    width: 100;
-    height: 10%;
-    background: #f1f1f1;
-    text-align: center;
-    padding: 10px;
-}
-h1{
-    font-family:'Pacifico' , cursive;
-    font-size: 48px;
-    color: #ff6b6b;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    text-align: center;
-}
-#signin{
-    border-style: solid;
-    border-width: 2px;
-    border-color: #ccc;
-    width: 240px;
-    height:50px;
-    padding: 10px;
-
-    align-self: flex-end;
-
-}
-#signin > button{
-    position: relative;
-    left: 10px;
-    top: 10px;
-}
-
-aside{
-
-    border-style: solid;
-    border-width: 2px;
-    border-color: #ccc;
-    margin-right : 20px;
-    padding: 20px;
-
-    flex :1;
-}
-
-section{
-
-    border-style: solid;
-    border-width: 2px;
-    border-color: #ccc;
-    padding: 20px;
-
-    flex:3;
-}
-    </style>
+    <link href="./public/style.css" rel="stylesheet">
 </head>
 <body>
     <header> 
@@ -115,52 +15,42 @@ section{
             <input type="password" placeholder="비밀번호"></td>
         </div>
 
-
         <nav id ="menubar">
             <ul>
                 <li><a href="#" id="homeBtn">Home</a></li>
                 <li><a href="#" id="closetBtn">Closet</a></li>
-                <li><a href="#" id="homeBtn">Pickolor</a></li>
-                <li><a href="#" id="homeBtn">SignUp</a></li>
+                <li><a href="#" id="pickolorBtn">Pickolor</a></li>
+                <li><a href="#" id="signupBtn">SignUp</a></li>
             </ul>
         </nav>
-       
     </nav>
-
-
 
     <main>
         <aside>
-
             <h3>현재 날씨</h3>
             <label for="city">도시를 입력하세요:</label>
             <input id="city" type="text" value ="">
             <button onclick="getWeather()">날씨 불러오기</button>
             <!-- <button onclick="getWeatherAndAsk()">날씨를 불러와 gpt에 질문</button> -->
-        <br>
+             <br>
             <p id="temperature"></p>
-            <!-- ajax fetch -->
-        <script>
-            function getWeather(){
-            let city = document.getElementById("city").value;
-            fetch('https://goweather.herokuapp.com/weather/'+ city)
-            .then((response) => response.json())
-            .then((data) => {
-            document.getElementById("temperature").innerHTML = data['temperature']
-            });
-        }
-        </script>
-
+            <script>
+                function getWeather(){
+                let city = document.getElementById("city").value;
+                fetch('https://goweather.herokuapp.com/weather/'+ city)
+                .then((response) => response.json())
+                .then((data) => {
+                document.getElementById("temperature").innerHTML = data['temperature']
+                });
+            }
+            </script>
         </aside>
-        
+
         <section>
             <h2>Pickolor</h2>
-        
             "패션을 더 쉽고 더 즐겁게: 스타일링을 위한 지능형 가이드"
             당신의 일상을 더욱 즐겁고 스타일리시하게 만들어줄 새로운 패션 파트너를 소개합니다. 우리는 당신의 스타일과 선호도를 고려하여 맞춤형 패션 조언을 제공하는 특별한 웹 플랫폼입니다.
-            
             패션은 더 이상 번거로운 작업이 아닙니다. 날씨, 색상, 그리고 당신의 옷장 속 아이템을 고려하여 최적의 의상 조합을 제안합니다. 이제 귀찮은 옷 고르기에서 벗어나, 당신만의 개성을 뽐내는 스타일을 자유롭게 표현해보세요.
-            
             또한, 패션에 대한 지식이 없더라도 걱정하지 마세요. 쉽고 간편한 사용법으로 모두가 패션에 대한 전문가가 될 수 있도록 돕습니다. 지금 시작해보세요!
             <br><br>
             <img src="./mainPageImages" width="500px" height="250px">
@@ -170,33 +60,9 @@ section{
     <footer>
         <p><strong>&copy 2024  Pickolor 메인 페이지. All rights reserved.</strong></p>
     </footer>
-
-
-
-    <script>
-        document.getElementById('closetBtn').addEventListener('click', function() {
-          window.location.href = '/closet';
-        });
-  
-
-
-
-
-  
-  //       closetBtn라는 ID를 가진 요소에 클릭 이벤트를 추가 , 버튼이 클릭되었을 때 실행되는 동작
-  
-  //  document.getElementById('closetBtn')는 HTML 문서 내에서 id="closetBtn"인 요소를 찾아서 가져오는 역할
-  
-  // .addEventListener('click', function() { ... }) 부분은 해당 요소에 클릭 이벤트를 추가하는 역할
-  // 클릭 이벤트가 발생했을 때  /closet로 이동하도록 지정되어 있으므로, 클릭했을 때 /closet 경로로 이동
-        
-        document.getElementById('homeBtn').addEventListener('click', function() {
-          window.location.href = '/';
-        });
-
-
-
-    </script>
+  <script src="./public/java.js"></script> 
+</body>
+</html>
 
 <!-- <script>
   function getWeatherAndAsk(){
@@ -250,11 +116,3 @@ section{
       chatContainer.appendChild(responseElement);
   }
 </script> -->
-
-
-
-
-
-  
-</body>
-</html>
