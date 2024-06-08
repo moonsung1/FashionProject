@@ -2,27 +2,24 @@
 <head>
     <meta charset="UTF-8">
     <title>메인페이지</title>
-    <link href="./public/style.css" rel="stylesheet">
+    <link href="./public/style.css" rel="stylesheet">  
 </head>
 <body>
     <header> 
         <h1>Pickolor</h1>
     </header>
+    <nav id ="menubar">
+        <ul>
+            <li><a href="#" id="homeBtn">Home</a></li>
+            <li><a href="#" id="closetBtn">Closet</a></li>
+            <li><a href="#" id="pickolorBtn">Pickolor</a></li>
+            <li><a href="#" id="signupBtn">SignUp</a></li>
+        </ul>
 
-    <nav>
-        <div id="signin">
-            <input type="text" placeholder="아이디"><button type="button">로그인</button>
-            <input type="password" placeholder="비밀번호"></td>
-        </div>
-
-        <nav id ="menubar">
-            <ul>
-                <li><a href="#" id="homeBtn">Home</a></li>
-                <li><a href="#" id="closetBtn">Closet</a></li>
-                <li><a href="#" id="pickolorBtn">Pickolor</a></li>
-                <li><a href="#" id="signupBtn">SignUp</a></li>
-            </ul>
-        </nav>
+        <form id="signin" method="POST" action="/login">
+            <input type="text" placeholder="아이디" name="id"> <button type="button">로그인</button>
+            <input type="password" placeholder="비밀번호" name="password">
+        </form>
     </nav>
 
     <main>
@@ -31,8 +28,7 @@
             <label for="city">도시를 입력하세요:</label>
             <input id="city" type="text" value ="">
             <button onclick="getWeather()">날씨 불러오기</button>
-            <!-- <button onclick="getWeatherAndAsk()">날씨를 불러와 gpt에 질문</button> -->
-             <br>
+            <br>
             <p id="temperature"></p>
             <script>
                 function getWeather(){
@@ -53,7 +49,7 @@
             패션은 더 이상 번거로운 작업이 아닙니다. 날씨, 색상, 그리고 당신의 옷장 속 아이템을 고려하여 최적의 의상 조합을 제안합니다. 이제 귀찮은 옷 고르기에서 벗어나, 당신만의 개성을 뽐내는 스타일을 자유롭게 표현해보세요.
             또한, 패션에 대한 지식이 없더라도 걱정하지 마세요. 쉽고 간편한 사용법으로 모두가 패션에 대한 전문가가 될 수 있도록 돕습니다. 지금 시작해보세요!
             <br><br>
-            <img src="./mainPageImages" width="500px" height="250px">
+            <img src="/public/images/MainpageImage.png" width="500px" height="250px">
         </section>
     </main> 
 
@@ -63,6 +59,37 @@
   <script src="./public/java.js"></script> 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <script>
   function getWeatherAndAsk(){
