@@ -1,14 +1,25 @@
 <!DOCTYPE html>
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
     <title>피콜로^^</title>
     <link href="./public/style.css" rel="stylesheet">
 </head>
 <body>
-    <header> 
-        <h1>Pickolor</h1>
+    <header>
+        <div class="login-container">
+            <form id="login" method="POST">
+                <input type="text" placeholder="아이디" name="id">
+                <input type="password" placeholder="비밀번호" name="password">
+                <button type="submit">로그인</button>
+            </form>
+        </div>
+        <div class="title-container">
+            <h1>Pickolor</h1>
+        </div>
     </header>
 
-    <nav id ="menubar">
+    <nav id="menubar">
         <ul>
             <li><a href="#" id="homeBtn">Home</a></li>
             <li><a href="#" id="closetBtn">Closet</a></li>
@@ -16,17 +27,36 @@
             <li><a href="#" id="signupBtn">SignUp</a></li>
         </ul>
     </nav>
-    <main>
-        <div style="border: 1px solid black; width: 100%;">
-            <button style="width: 100%; height: 100px;">AI의 힘</button>
-            <section style="overflow-y: scroll; height: 500px;">
-                <img src="/public/images/MainpageImage.png" width="1000px" height="400px">
-            </section>  
-        </div>
-    </main> 
+    
+    <main style="height: 800px;">
+        <section style="width: 100%; padding: 20px;">
+            <div style="border: 1px solid #ccc; padding: 20px; text-align: center; background-color: #444;">
+                <button id="run-notebook" onclick="change()" style="padding: 10px 20px; background-color: #5a5a5a; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+                    ai의 힘
+                </button>
+                <script>
+                    function change() {
+                        let img = document.getElementById("resultImage")
+                        img.src = "public/images/loading.png";
+                    }
+
+                    document.getElementById('run-notebook').addEventListener('click', async () => {
+                        const response = await fetch('/run-notebook', { method: 'POST' });
+                        const result = await response.text();
+                        alert(result);
+                    });
+                </script>
+            </div>
+            <div class="image-container">
+                <img id="resultImage" src="http://localhost:1004/get_latest_image" height="500px">
+            </div>
+        </section>
+    </main>
+    
+    
     <footer>
-        <p><strong>&copy 2024  Pickolor 메인 페이지. All rights reserved.</strong></p>
+        <p><strong>&copy; 2024 Pickolor 메인 페이지. All rights reserved.</strong></p>
     </footer>
-    <script src="./public/java.js"></script> 
+    <script src="./public/java.js"></script>
 </body>
-</html>
+</html> 

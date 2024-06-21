@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <head>
+    <meta charset="UTF-8">
     <title>옷장</title>
     <link href="./public/style.css" rel="stylesheet">
 </head>
-<body>
-    <header> 
-        <h1>Closet</h1>
+<body onload>
+    <header>
+        <div class="login-container">
+            <form id="login" method="POST">
+                <input type="text" placeholder="아이디" name="id">
+                <input type="password" placeholder="비밀번호" name="password">
+                <button type="submit">로그인</button>
+            </form>
+        </div>
+        <div class="title-container">
+            <h1>Closet</h1>
+        </div>
     </header>
 
-    <nav id ="menubar">
+    <nav id="menubar">
         <ul>
             <li><a href="#" id="homeBtn">Home</a></li>
             <li><a href="#" id="closetBtn">Closet</a></li>
@@ -17,46 +27,45 @@
         </ul>
     </nav>
 
-    <main>
-        <aside>
-            <h2>옷장</h2>
-            <ul>
-              <li><a href="#top">상의</a></li>
-              <li><a href="#bottom">하의</a></li>
-              <li><a href="#cap">모자</a></li>
-            </ul>
-        </aside>
-    
-        <section style="overflow-y: scroll">
-            <h2>상의</h2>
-            <hr>
+    <main id="closetMain">
+        <section>
+            <strong style="display: inline-block; font-size: 25px;">상의</strong>
             <form id="uploadFormTop" enctype="multipart/form-data" action="/upload/top" method="POST">
                 <input type="file" name="image">
-                <button type="submit">사진 업로드</button>
+                <button type="submit">업로드</button>
             </form>
-            <div id="top"></div>
-
-            <h2>하의</h2>
             <hr>
+            <div id="top" style="overflow-x: scroll;"></div>
+
+            <strong style="display: inline-block; font-size: 25px;">하의</strong>
             <form id="uploadFormBottom" enctype="multipart/form-data" action="/upload/bottom" method="POST">
                 <input type="file" name="image">
-                <button type="submit">사진 업로드</button>
+                <button type="submit">업로드</button>
             </form>
-            <div id="bottom"></div>
-
-            <h2>모자</h2>
             <hr>
-            <form id="uploadFormCap" enctype="multipart/form-data" action="/upload/cap" method="POST">
+            <div id="bottom" style="overflow-x: scroll;"></div>
+
+            <strong style="display: inline-block; font-size: 25px;">아우터</strong>
+            <form id="uploadFormOuter" enctype="multipart/form-data" action="/upload/outer" method="POST">
                 <input type="file" name="image">
-                <button type="submit">사진 업로드</button>
+                <button type="submit">업로드</button>
             </form>
-            <div id="cap"></div>
+            <hr>
+            <div id="outer" style="overflow-x: scroll;"></div>
+
+            <strong style="display: inline-block; font-size: 25px;">신발</strong>
+            <form id="uploadFormShoe" enctype="multipart/form-data" action="/upload/shoe" method="POST">
+                <input type="file" name="image">
+                <button type="submit">업로드</button>
+            </form>
+            <hr>
+            <div id="shoe" style="overflow-x: scroll;"></div>
         </section>
     </main> 
 
     <footer>
-        <p><strong>&copy 2024  Pickolor 메인 페이지. All rights reserved.</strong></p>
+        <p><strong>&copy; 2024 Pickolor 메인 페이지. All rights reserved.</strong></p>
     </footer>
-    <script src="./public/java.js"></script> 
+    <script src="./public/java.js"></script>
 </body>
 </html>

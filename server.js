@@ -7,8 +7,34 @@ var fs = require('fs');  //파일 읽고 쓰는 모듈 (이미지)
 /*회원정보 저장*/
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+/*주피터 노트북 실행*/
+const { exec } = require('child_process');
+const path = require('path');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname));
+
 var users = [];
 
+const jupyterPath = 'C:\\Users\\moonsung1\\anaconda3\\Scripts\\jupyter.exe';
+
+app.post('/run-notebook', (req, res) => {
+    const notebookPath = path.join(__dirname, 'chatWithChatGPT.ipynb');
+    exec(`"${jupyterPath}" nbconvert --to notebook --execute "${notebookPath}" --output output_notebook.ipynb`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`노트북 실행 중 오류 발생: ${error.message}`);
+            return res.status(500).send('노트북 실행 중 오류 발생');
+        }
+        console.log(`stdout: ${stdout}`);
+        console.error(`stderr: ${stderr}`);
+        res.send('노트북이 성공적으로 실행되었습니다.');
+    });
+});
+
+
+/*페이지 이동*/
 app.post('/signup', function(req, res) {
     var uid = req.body.uid;
     var id = req.body.id;
@@ -48,7 +74,7 @@ app.post('/', function(req, res) {
 
 /* 이미지 업로드를 위한 것*/
 var multer = require('multer');
-var path = require('path');
+
 
 // 이미지를 저장할 디렉토리 설정
 const storage = multer.diskStorage({
@@ -91,4 +117,41 @@ app.get('/pickolor', function(req, res){
 });
 app.get('/signup', function(req, res){         
     res.sendFile(__dirname + '/signup.html'); 
+});
+
+
+
+app.use(express.static('public'));
+
+// public/uploads/ai 폴더 경로 지정
+const folderPath = path.resolve(__dirname, 'public', 'uploads', 'ai');
+
+app.get('/get_latest_image', (req, res) => {
+    console.log('Scanning folder:', folderPath); // 폴더 경로 출력
+
+    fs.readdir(folderPath, (err, files) => {
+        if (err) {
+            console.error('Unable to scan folder:', err);
+            return res.status(500).send('Unable to scan folder: ' + err);
+        }
+
+        console.log('Files found:', files); // 폴더 내 파일 목록 출력
+
+        const imageFiles = files.filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file));
+        if (imageFiles.length === 0) {
+            console.log('No images found in the specified folder.');
+            return res.status(404).send('No images found in the specified folder.');
+        }
+
+        const latestImage = imageFiles
+            .map(file => ({
+                file,
+                time: fs.statSync(path.join(folderPath, file)).mtime.getTime()
+            }))
+            .sort((a, b) => b.time - a.time)[0].file;
+
+        const imagePath = path.join(folderPath, latestImage);
+        console.log('Latest image path:', imagePath);
+        res.sendFile(imagePath);
+    });
 });
