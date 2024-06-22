@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <title>피콜로^^</title>
     <link href="./public/style.css" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <div class="login-container">
@@ -27,12 +29,12 @@
             <li><a href="#" id="signupBtn">SignUp</a></li>
         </ul>
     </nav>
-    
+
     <main style="height: 800px;">
         <section style="width: 100%; padding: 20px;">
-            <div style="border: 1px solid #ccc; padding: 20px; text-align: center; background-color: #444;">
-                <button id="run-notebook" onclick="change()" style="padding: 10px 20px; background-color: #5a5a5a; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
-                    ai의 힘
+            <div style="text-align: center; background-color: #444;">
+                <button id="run-notebook" onclick="change()">
+                    AI의 '힘'
                 </button>
                 <script>
                     function change() {
@@ -50,13 +52,36 @@
             <div class="image-container">
                 <img id="resultImage" src="http://localhost:1004/get_latest_image" height="500px">
             </div>
+            <div style="align-items: center; display: flex; justify-content: center;">
+                <div id="fileContents" style="border: solid 1px white; padding: 5px; width: 60%;"></div>
+            </div>
+            <script>
+                window.onload = function () {
+                    const url = "http://localhost:1004/public/comment.txt"; // 외부 txt 파일의 URL을 여기에 입력
+
+                    fetch(url)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.text();
+                        })
+                        .then(data => {
+                            document.getElementById('fileContents').textContent = data;
+                        })
+                        .catch(error => {
+                            console.error('There has been a problem with your fetch operation:', error);
+                        });
+                };
+            </script>
         </section>
     </main>
-    
-    
+
+
     <footer>
         <p><strong>&copy; 2024 Pickolor 메인 페이지. All rights reserved.</strong></p>
     </footer>
     <script src="./public/java.js"></script>
 </body>
-</html> 
+
+</html>

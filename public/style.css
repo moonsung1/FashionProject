@@ -212,5 +212,34 @@ footer {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#run-notebook {
+    padding: 10px;
+    font-size: 50px;
+    font-weight: 700;
+    background-color: #5a5a5a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 15%;
     height: 100%;
+    transition: background-color 0.3s;
+}
+
+#run-notebook:hover {
+    animation: rainbow 5s infinite; /* 호버 시 rainbow 애니메이션 적용 */
+}
+
+@keyframes rainbow {
+    0% { background-color: #ff0000; } /* 빨강 */
+    16.67% { background-color: #ff7f00; } /* 주황 */
+    33.33% { background-color: #ffff00; } /* 노랑 */
+    50% { background-color: #00ff00; } /* 초록 */
+    66.67% { background-color: #0000ff; } /* 파랑 */
+    83.33% { background-color: #4b0082; } /* 남색 */
+    100% { background-color: #8b00ff; } /* 보라 */
 }

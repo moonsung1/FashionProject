@@ -29,7 +29,8 @@ app.post('/run-notebook', (req, res) => {
         }
         console.log(`stdout: ${stdout}`);
         console.error(`stderr: ${stderr}`);
-        res.send('노트북이 성공적으로 실행되었습니다.');
+        res.send('노트북이 성공적으로 실행되었습니다.(새로고침(F5) 하세요.)');
+
     });
 });
 
@@ -82,9 +83,11 @@ const storage = multer.diskStorage({
         const category = req.params.category; // 클라이언트로부터 전달된 카테고리 정보 읽기
         cb(null, `./public/uploads/${category}`);
     },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
+    filename:(req, file, done) => {
+        const ext = path.extname(file.originalname)
+        const fielname = path.basename(file.originalname, ext) + '_' + Date.now() + ext
+        done(null, filename)
+     }
 });
 
 // 이미지를 업로드할 미들웨어 설정
